@@ -4,28 +4,48 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="col-md-2">
-            <ul data-spy="affix" data-offset-top="60" data-offset-bottom="200">
-                <li>Jobs</li>
-                <li>Public Safety</li>
-                <li>Education</li>
-                <li>Transparency</li>
+        <div class="col-md-12">
+            <header>
+                <h1>{{ COPY.content.project_name|smarty }}</h1>
+                <h2>{{ COPY.content.subhead|smarty }}</h2>
+            </header>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2 navbar-example">
+            <ul class="nav nav-stacked" data-spy="affix" data-offset-top="0" data-offset-bottom="0">
+                {% for row in COPY.topics %}
+                    <li><a href="#{{row.value|e}}">{{row.key}}</a></li>
+                {% endfor %}
             </ul>
         </div>
         <div class="col-md-10">
-            <header>
-                <h1>{{ COPY.content.project_name|smarty }}</h1>
-                <h2>{{ COPY.content.lorem_ipsum|smarty }}</h2>
-            </header>
+            
             {% for key,value in TOPICS.iteritems() %}
-                <div class="jobs">
-                    <h2 class="promise">"{{value.story.promise}}"</h2>
+            <div class="jobs">
+                <div class="story" id="{{key|e}}">
+                    <h3 class="promise">"{{value.story.promise}}"</h3>
                     <span class="subhead">{{value.story.subhead}}</span>
                     by {{value.story.byline}}
                     {{value.story.summary}}
-                </div> 
-            {% endfor%}
+                </div>
+                <div class="grades">
+                    <h4>Grades</h4>
+                    {% if value.story.conversation_pub|e == 'yes' %}
+                        {% for row in value.grades %}
+                           <div class="grader">{{ row.name }}: {{ row.title }}</div>
+                        {% endfor %}
+                    {% else %}
+                        {% for row in value.grades %}
+                           <div class="grader">{{ row.quote }} - {{ row.name }}</div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="data">
 
+                </div>
+            </div> 
+            {% endfor%}
         </div>
     </div>
 </div>

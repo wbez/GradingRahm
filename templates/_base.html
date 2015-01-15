@@ -20,7 +20,7 @@
     {% block extra_head %}
     {% endblock extra_head %}
 </head>
-<body>
+<body data-spy="scroll" data-target=".navbar-example">
 
     <a class="sr-only" href="#content">Skip To Content</a>
 
@@ -112,6 +112,8 @@
 
     {% block extra_foot %}
     {% endblock extra_foot %}
-
+    <script>
+        $('body').scrollspy({ target: '.navbar-example' })
+    </script>
 </body>
 </html>
