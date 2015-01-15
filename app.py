@@ -9,6 +9,8 @@ import app_config
 from render_utils import make_context, smarty_filter, urlencode_filter
 import static
 
+from gradingrahm import make_rahm_context
+
 app = Flask(__name__)
 
 app.add_template_filter(smarty_filter, name='smarty')
@@ -20,7 +22,7 @@ def index():
     """
     Example view demonstrating rendering a simple HTML page.
     """
-    context = make_context()
+    context = make_rahm_context()
 
     with open('data/featured.json') as f:
         context['featured'] = json.load(f)

@@ -94,7 +94,7 @@ DEBUG = True
 """
 COPY EDITING
 """
-COPY_GOOGLE_DOC_URL = 'https://docs.google.com/a/chicagopublicradio.org/spreadsheet/ccc?key=0Atv9GAazkNEXdGlpR0tHTS1UN0VoSlVycVdVa1dIM2c'
+COPY_GOOGLE_DOC_URL = 'https://docs.google.com/a/chicagopublicradio.org/spreadsheet/ccc?key=0Atv9GAazkNEXdHdRN01Wcm1mb2FQcDM4WE9LelA2dHc'
 COPY_PATH = 'data/copy.xlsx'
 
 """
