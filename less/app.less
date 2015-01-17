@@ -77,8 +77,24 @@ a.btn.btn-blue {
 	}
 }
 
-
 // Navbar
+
+li.active {
+	background-color:#e0e0e0;
+}
+
+.nav.affix {
+    top: 0px;
+}
+
+.nav {
+	background-color:#fff;
+	z-index:100;
+}
+
+
+
+
 nav {
 	background-color: #333;
 	height: 46px;
@@ -398,6 +414,16 @@ footer {
 		.secondary ul { float: right; }
 		.secondary li { font-size: 10px; text-transform: none; }
 		.secondary a { color: #bccae5; }
+	}
+
+	.nav li {
+		display: inline-block;
+		list-style-type: none;
+		font-size:10px;
+	}
+
+	ul.nav {
+		text-align:center;	
 	}
 }
 @media (max-width: 480px) {

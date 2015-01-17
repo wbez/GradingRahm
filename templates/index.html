@@ -3,7 +3,7 @@
 
 {% block content %}
 <div class="container">
-    <div class="row">
+    <div class="row masthead">
         <div class="col-md-12">
             <header>
                 <h1>{{ COPY.content.project_name|smarty }}</h1>
@@ -12,24 +12,27 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-2 navbar-example">
-            <ul class="nav nav-stacked" data-spy="affix" data-offset-top="0" data-offset-bottom="0">
+        <div class="col-sm-2 sidebar">
+            <ul class="nav nav-stacked" data-spy="affix" data-offset-bottom="0">
                 {% for row in COPY.topics %}
                     <li><a href="#{{row.value|e}}">{{row.key}}</a></li>
                 {% endfor %}
             </ul>
         </div>
-        <div class="col-md-10">
+        <div class="col-sm-10">
             
             {% for key,value in TOPICS.iteritems() %}
-            <div class="jobs">
-                <div class="story" id="{{key|e}}">
+            <div class="topic" id="{{key|e}}">
+                <div class="story" id="{{key|e}}_story">
                     <h3 class="promise">"{{value.story.promise}}"</h3>
-                    <span class="subhead">{{value.story.subhead}}</span>
-                    by {{value.story.byline}}
-                    {{value.story.summary}}
+                    <div class="item-nav text-center">
+                        <a href="#{{key|e}}_story">Our Evaluation</a> <i class="fa fa-file-text"></i> | <a href="#{{key|e}}_grades">Their Grades</a> <i class="fa fa-check"></i> | <a href="#{{key|e}}_data">The Data</a> <i class="fa fa-bar-chart-o"></i>
+                    </div>
+                    <p class="subhead">{{value.story.subhead}}</p>
+                    <p class="byline">by {{value.story.byline}}</p>
+                    <p class="summary">{{value.story.summary}}</p>
                 </div>
-                <div class="grades">
+                <div class="grades" id="{{key|e}}_grades">
                     <h4>Grades</h4>
                     {% if value.story.conversation_pub|e == 'yes' %}
                         {% for row in value.grades %}
@@ -41,12 +44,37 @@
                         {% endfor %}
                     {% endif %}
                 </div>
-                <div class="data">
-
+                <div class="data" id="{{key|e}}_data">
+                    <h4>Data</h4>
                 </div>
+
             </div> 
             {% endfor%}
         </div>
     </div>
 </div>
 {% endblock %}
+
+
+{% block extra_foot %}
+
+    <script>
+
+    $( document ).ready(function() {
+        $('.nav').affix({
+            offset: { top: $('.nav').offset().top }
+        });
+
+        $( window ).resize(function() {
+            sizeNav();     
+        });
+
+        var sizeNav = function(){
+            $('.nav').width($('.col-sm-2').width());
+        }
+
+        sizeNav();
+    });
+    </script>
+
+{% endblock extra_foot %}
