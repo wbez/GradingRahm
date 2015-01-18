@@ -33,8 +33,6 @@ def make_rahm_context(asset_depth=0):
         topic_context['grades'] = copy[grades_sheet]
         context['TOPICS'][slug] = topic_context
 
-        print topic_context
-
 
     context['COPY'] = copytext.Copy(app_config.COPY_PATH)
     context['JS'] = JavascriptIncluder(asset_depth=asset_depth)

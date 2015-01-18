@@ -16,6 +16,11 @@ app = Flask(__name__)
 app.add_template_filter(smarty_filter, name='smarty')
 app.add_template_filter(urlencode_filter, name='urlencode')
 
+@app.template_filter('datetimeformat')
+def datetimeformat(value, format='%H:%M / %d-%m-%Y'):
+    return value.strftime(format)
+
+
 # Example application views
 @app.route('/')
 def index():

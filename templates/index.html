@@ -34,13 +34,19 @@
                 </div>
                 <div class="grades" id="{{key|e}}_grades">
                     <h4>Grades</h4>
-                    {% if value.story.conversation_pub|e == 'yes' %}
+                    {% if value.story.conversation_pub|e == 'no' %}
+                        <p>Check back to hear what grades our panel gives Rahm Emanuel on {{key}}.</p>
                         {% for row in value.grades %}
-                           <div class="grader">{{ row.name }}: {{ row.title }}</div>
+                           <div class="grader">{{ row.name }} - <a href="{{row.bio_link}}">{{ row.title }}</a></div>
                         {% endfor %}
                     {% else %}
+                        <p>WBEZ asked a panel of experts to give us their grade on how Rahm Emaneul performed on {{key}}. See their answers and listen back to the conversation.</p>
+                        <strong>Our panel</strong>
                         {% for row in value.grades %}
-                           <div class="grader">{{ row.quote }} - {{ row.name }}</div>
+                            <div class="grader">
+                                {{ row.quote }} - {{ row.name }}, <a href="{{row.bio_link}}">{{ row.title }}</a>
+                                <span class="pull-right">{{row.grade}}</span>
+                            </div>
                         {% endfor %}
                     {% endif %}
                 </div>
