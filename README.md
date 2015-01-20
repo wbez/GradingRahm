@@ -1,12 +1,13 @@
-Copyright 2014 NPR.  All rights reserved.  No part of these materials may be reproduced, modified, stored in a retrieval system, or retransmitted, in any form or by any means, electronic, mechanical or otherwise, without prior written permission from NPR.
+Copyright 2015 WBEZ.  All rights reserved.  No part of these materials may be reproduced, modified, stored in a retrieval system, or retransmitted, in any form or by any means, electronic, mechanical or otherwise, without prior written permission from NPR.
 
-(Want to use this code? Send an email to nprapps@npr.org!)
+(Want to use this code? Send an email to web@wbez.org!)
 
 
-GradingRahm
+WBEZ - Grading Rahm
 ========================
 
 * [What is this?](#what-is-this)
+* [Custom styles for Grading Rahm](#custom-styles)
 * [Assumptions](#assumptions)
 * [What's in here?](#whats-in-here)
 * [Bootstrap the project](#bootstrap-the-project)
@@ -30,7 +31,21 @@ GradingRahm
 What is this?
 -------------
 
-**TKTK: Describe GradingRahm here.**
+A small app for the Grading Rahm project from WBEZ.
+
+Custom styles
+-------------
+
+Grading Rahm has some custom css styles.
+
+* Main header is `class="masthead"`
+* Sticky side navigation is in `class="sidebar"`. The actual nav elements are in a <ul> with `class="nav-stacked"`
+* Custom styles for the nav are in app.less on line 82
+* Each story lives in a container with the structure `<div class="topic" id="{{key|e}}">`, where the id is topic name listed in the main google spreadsheet in a sheet called topics.
+* Each topic has three sections (story, grades, data) with an anchor link in the style of topic_section, such as jobs_story, public_safety_grades.
+* Spreadsheet values can be accessed as value.story.key_name or value.grades.column_name
+* Most story elements can be identified by their class name, such as subhead, byline, summary, etc ...
+* Grades are controlled by an if-then statement controlled by the value.story.conversation_pub value. If a conversation has been published, display the conversation link and a listing of grades. If not, display just a listing of panel members.
 
 Assumptions
 -----------
