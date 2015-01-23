@@ -6,7 +6,9 @@
     <div class="row masthead">
         <div class="col-md-12">
             <header>
-                <h1>{{ COPY.content.project_name|smarty }}</h1>
+
+
+                <h1>Grading<img src="images/gradingrahmpng5.png" style="width:171px;height:200px"></img>Rahm</h1>
                 <h2>{{ COPY.content.subhead|smarty }}</h2>
             </header>
         </div>
@@ -14,32 +16,41 @@
     <div class="row">
         <div class="col-sm-2 sidebar">
             <ul class="nav nav-stacked">
-                {% for row in COPY.topics %}
-                    <li><a href="#{{row.value|e}}">{{row.key}}</a></li>
-                {% endfor %}
+                    <li class="jobs"><a href="#"><center><font face="Droid Serif"><strong><i class="fa fa-dollar fa-2x"></i><br><i>Jobs</a></li></center></strong>
+                    <li class="publicsafety"><a href="#"><center><strong><i class="fa fa-medkit fa-2x"></i><br>Public safety</a></li></center>
+                    <li class="education"><a href="#"><center><i class="fa fa-pencil fa-2x"></i><br>Education</a></li></center>
+                    <li class="transparency"><a href="#"><center><i class="fa fa-comments fa-2x"></i><br>Transparency</a></li></center></font></i>
+
+               
             </ul>
         </div>
         <div class="col-sm-10">
             
             {% for key,value in TOPICS.iteritems() %}
+            
+
             <div class="topic" id="{{key|e}}">
                 <div class="story" id="{{key|e}}_story">
-                    <h3 class="promise">"{{value.story.promise}}"</h3>
-                    <div class="item-nav text-center">
-                        <a href="#{{key|e}}_story">Our Evaluation</a> <i class="fa fa-file-text"></i> | <a href="#{{key|e}}_grades">Their Grades</a> <i class="fa fa-check"></i> | <a href="#{{key|e}}_data">The Data</a> <i class="fa fa-bar-chart-o"></i>
-                    </div>
-                    <p class="subhead">{{value.story.subhead}}</p>
+                    
+                    <center><h4 class="promise"><font face="Droid Serif" color="#3b5998"><i>"{{value.story.promise}}"</h4></font></center></i>
+
+<h3><span class="label label-default">Our evaluation <i class="fa fa-file-text"></i></h3></font></span></strong>
+
+                    <p class="subhead"><h3>{{value.story.subhead}}</p></h3></font>
                     <p class="byline">by {{value.story.byline}}</p>
                     <p class="summary">{{value.story.summary}}</p>
                 </div>
+
                 <div class="grades" id="{{key|e}}_grades">
-                    <h4>Grades</h4>
+                    <h3><span class="label label-default">Panelists' grades <i class="fa fa-check"></i></h3></span>
+
                     {% if value.story.conversation_pub|e == 'no' %}
                         <p>Check back to hear what grades our panel gives Rahm Emanuel on {{key}}.</p>
                         {% for row in value.grades %}
                            <div class="grader">{{ row.name }} - <a href="{{row.bio_link}}">{{ row.title }}</a></div>
                         {% endfor %}
                     {% else %}
+                        
                         <p>WBEZ asked a panel of experts to give us their grade on how Rahm Emaneul performed on {{key}}. See their answers and listen back to the conversation.</p>
                         <strong>Our panel</strong>
                         {% for row in value.grades %}
@@ -50,8 +61,9 @@
                         {% endfor %}
                     {% endif %}
                 </div>
+                <br>
                 <div class="data" id="{{key|e}}_data">
-                    <h4>Data</h4>
+                    <h3><span class="label label-default">Data <i class="fa fa-bar-chart-o"></i></h4></span>
                 </div>
 
             </div> 

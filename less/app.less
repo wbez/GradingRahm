@@ -2,6 +2,7 @@
 @import "less/lib/font-awesome/font-awesome";
 @import "less/lib/prefixer";
 @import "less/share-modal.less";
+@import url(http://fonts.googleapis.com/css?family=Droid+Serif:400,700);
 
 // Global variables
 @img-root: "../img";
@@ -17,8 +18,9 @@ body {
 }
 
 h1 { 
-    font: normal 32px/1.125 Gotham, Georgia, serif; 
-    margin: 0 0 22px 0;
+ font: 'Droid Serif', serif;
+    font-weight: 400; 
+    margin: 0 0 0px 0;
 }
 
 h2 { 
@@ -29,11 +31,27 @@ h2 {
     font-size: 22px;
 }
 
-h3, h4, h5, h6 { 
-    font-weight: normal; 
+h4 { 
+    font: 'Droid Serif', serif;
+    font-weight: 400; 
+    color: #333;
+    margin: 22px 0 42px 0;
+    font-size: 40px;
+}
+
+h3 { 
+    font: 'Droid Serif', serif;
+    font-weight: 400; 
     line-height: 1.2; 
-    color: #999; 
+    color: #000; 
     margin-bottom: 22px;
+    text-align: left;
+}
+
+h5, h6 { 
+    font: Helvetica;
+    margin-bottom: 3px;
+    
 }
 
 p {
@@ -43,12 +61,12 @@ p {
 a, 
 a:link, 
 a:visited { 
-    color: #4774cc; 
+    color: #fff; 
     text-decoration: none;
 }
 
 a:hover, a:active { 
-    color: #bccae5; 
+    color: #7598c9; 
     text-decoration: none; 
 }
 
@@ -63,7 +81,7 @@ a.btn.btn-blue {
 	color: #fff;
 	padding: 0 20px;
 	cursor: pointer;
-	font-size: 12px;
+	font-size: 20px;
 	font-weight: bold;
 	text-shadow: none;
 	-webkit-font-smoothing: antialiased;
@@ -80,18 +98,57 @@ a.btn.btn-blue {
 // Navbar
 
 // Custom WBEZ styles for the navbar
-li.active {
-	background-color:#e0e0e0;
+.nav {
+    
+	background-color:#fff;
+	width: 100%;
+	z-index:100;
+	margin-top: 22px;
+	
 }
+
+li.jobs {
+    background-color:#3b5998;
+    height: 100px;
+    font-size: 20px;
+    text-align: center;
+    padding: 15px 10px 10px 10px;
+    }
+    
+li.publicsafety {
+    background-color:#00729c;
+    height: 100px;
+    font-size: 20px;
+    text-align: center;
+    padding: 15px 10px 10px 10px;
+    }
+    
+li.education {
+    background-color:#5b9e17;
+    height: 100px;
+    font-size: 20px;
+    text-align: center;
+    padding: 15px 10px 10px 10px;
+    } 
+
+li.transparency {
+    background-color:#94d76a;
+    height: 100px;
+    font-size: 20px;
+    text-align: center;
+   padding: 15px 10px 10px 10px;
+    } 
+    
 
 .nav.affix {
     top: 0px;
 }
 
-.nav {
-	background-color:#fff;
-	z-index:100;
-}
+
+    
+
+
+
 // end WBEZ styles
 
 
@@ -111,7 +168,7 @@ nav {
 	        float: left; 
 	        height: 44px; 
 	        line-height: 44px; 
-	        margin-left: 22px; 
+	        margin-left: 0px; 
 	        font-size: 12px;
 	        
 	        &:first-child { margin-left: 0; }
@@ -182,21 +239,24 @@ nav {
 
 // Header
 header {
-	background-color: #ebebeb;
-	padding: 50px 30px 30px 30px;
+	background-color: #fff;
+	padding: 10px 30px 30px 30px;
 	margin: 0;
-	border-bottom: 2px solid #fff;
+	border-bottom: 3px solid #666;
 	
 	h1 { 
-	    font-size: 48px; 
-	    font-family: Arial, Helvetica, sans-serif; 
+	    font-size: 85px; 
+	    font-family: 'Droid Serif', serif;
+	    font-weight: 400;
 	    color: #555; 
 	    margin-bottom: 11px;
+	    text-align: center;
 	}
 	h2 { 
-	    font-size: 15px; 
+	    font-size: 20px; 
 	    color: #666; 
 	    margin: 0;
+	    text-align: center;
 	}
 }
 
@@ -215,7 +275,7 @@ header {
         margin: 0 auto;
     }
     p { 
-        margin: 6px 0 0 0; 
+        margin: 0px 0 0 0; 
         font-size: 11px; 
         color: #999;
         
@@ -227,12 +287,15 @@ header {
 
 
 // Content
-#content { margin-top: 44px; }
+#content { margin-top: 10px; left: 0px;
+
+}
 #story-meta {
+	margin-top: 22px;
 	margin-bottom: 22px;
 	
 	p {
-		font-size: 12px; 
+		font-size: 14px; 
 		margin: 0; 
 		color: #666;
 		
@@ -298,7 +361,7 @@ h1 + #story-meta { margin-top: -11px; }
 		padding: 5px;
 		min-width: 30px;
 		background: @gray-light;
-		color: #fff;
+		color: #000;
 		text-align: center;
 		font-family: "Gotham SSm", @font-family-base;
 
@@ -317,7 +380,7 @@ h1 + #story-meta { margin-top: -11px; }
 
 		&:hover {
 			background: @brand-primary;
-			color: #fff;
+			color: #000;
 
 			&:after {
 				border-color: transparent @brand-primary transparent transparent;
@@ -415,6 +478,10 @@ footer {
 		.secondary ul { float: right; }
 		.secondary li { font-size: 10px; text-transform: none; }
 		.secondary a { color: #bccae5; }
+	}
+	
+	.nav {
+	    margin-top:0px;
 	}
 
 	.nav li {
