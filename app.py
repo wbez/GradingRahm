@@ -62,7 +62,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('-p', '--port')
     args = parser.parse_args()
-    server_port = 8000
+    server_port = 8080
 
     if args.port:
         server_port = int(args.port)
