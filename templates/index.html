@@ -6,7 +6,7 @@
     <div class="row masthead">
         <div class="col-md-12">
             <header>
-                <h1>Grading<img src="images/gradingrahmpng5.png" style="width:171px;height:200px"></img>Rahm</h1>
+                <h1>Grading<img src="images/gradingrahmpng5.png"></img>Rahm</h1>
                 <h2>{{ COPY.content.subhead|smarty }}</h2>
             </header>
         </div>
@@ -14,27 +14,15 @@
     <div class="row">
         <div class="col-sm-2 sidebar">
             <ul class="nav nav-stacked">
-                <li class="nav-element jobs">
-                    <a href="#jobs">
-                        <strong><i class="fa fa-dollar fa-2x"></i><br>Jobs</strong>
+                {% for topic in COPY.topics %}
+                <li class="nav-element {{topic.value}}">
+                    <a href="#{{topic.value}}">
+                        <strong><i class="fa {{topic.icon}} fa-2x"></i><br><span class="hidden-xs">{{topic.key}}</span></strong>
                     </a>
                 </li>
-                <li class="nav-element education">
-                    <a href="#education">
-                        <strong><i class="fa fa-pencil fa-2x"></i><br>Education</strong>
-                    </a>
-                </li> 
-                <li class="nav-element publicsafety">
-                    <a href="#public_safety">
-                        <strong><i class="fa fa-medkit fa-2x"></i><br>Public safety</strong>
-                    </a>
-                </li>
-                <li class="nav-element transparency">
-                    <a href="#transparency">
-                        <strong><i class="fa fa-comments fa-2x"></i><br>Transparency</strong>
-                    </a>
-                </li>
+                {% endfor %}
             </ul>
+            
         </div>
         <div class="col-sm-10">
             
@@ -44,17 +32,16 @@
             <div class="topic" id="{{key|e}}">
                 <div class="story" id="{{key|e}}_story">
                     
-                    <h4 class="promise text-center"><font face="Droid Serif" color="#3b5998"><i>"{{value.story.promise}}"</h4></font></i>
-
-<h3><span class="label label-default">Our evaluation <i class="fa fa-file-text"></i></h3></font></span></strong>
-
-                    <p class="subhead"><h3>{{value.story.subhead}}</p></h3></font>
-                    <p class="byline">by {{value.story.byline}}</p>
+                    <h4 class="promise text-center">"<em>{{value.story.promise}}"</em></h4>
+                    <p class="rahm text-center"><em>&#8212; Rahm Emanuel</em></p>
+                    <h3><span class="label label-default">Our evaluation <i class="fa fa-file-text"></i></span></h3>
+                    <h3 class="subhead lead">{{value.story.subhead}}</h3>
+                    <p class="byline"><em>by {{value.story.byline}}</em></p>
                     <p class="summary">{{value.story.summary}}</p>
                 </div>
 
                 <div class="grades" id="{{key|e}}_grades">
-                    <h3><span class="label label-default">Panelists' grades <i class="fa fa-check"></i></h3></span>
+                    <h3><span class="label label-default">Panelists' grades <i class="fa fa-check"></i></span></h3>
 
                     {% if value.story.conversation_pub|e == 'no' %}
                         <p>Check back to hear what grades our panel gives Rahm Emanuel on {{key}}.</p>
@@ -87,6 +74,8 @@
                     {% endif %}
                 </div>
 
+                <hr>
+
             </div> 
             {% endfor%}
         </div>
@@ -112,8 +101,24 @@
             $('.nav').width($('.col-sm-2').width());
         }
 
+        $( window ).resize(function() {
+            $('body').scrollspy('refresh');
+        });
+
         sizeNav();
     });
+
+    window.onload = function() {
+        console.log('window onload')
+        $('body').scrollspy('refresh');
+        $("iframe").each(function() { 
+            console.log('an iframe');
+            $(this).load(function(){
+                console.log('an iframe load');
+            })
+        });
+    };
+
     </script>
 
 {% endblock extra_foot %}
