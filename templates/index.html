@@ -35,7 +35,7 @@
                     
                     <h4 class="promise text-center">"<em>{{value.story.promise}}"</em></h4>
                     <p class="rahm text-center"><em>&#8212; Rahm Emanuel</em></p>
-                    <h3><span class="label label-default">Our report <i class="fa fa-file-text"></i></span></h3>
+                    <h3><span class="label label-default">Our Report <i class="fa fa-file-text"></i></span></h3>
                     <h3 class="subhead lead">{{value.story.subhead}}</h3>
                     <p class="byline"><em>by {{value.story.byline}}</em></p>
                     <div class="audio">{{value.story.audio}}</div>
@@ -43,26 +43,33 @@
                 </div>
 
                 <div class="grades" id="{{key|e}}_grades">
-                    <h3><span class="label label-default">Panelists' grades <i class="fa fa-check"></i></span></h3>
-                    <p>{{COPY.content.grades_subhead}}</p>
+                    <h3><span class="label label-default">Panelists' Grades <i class="fa fa-check"></i></span></h3>
                     {% if value.story.conversation_pub|e == 'no' %}
-                        <p>Listen to WBEZ's Morning Shift on {{value.story.pub_date}} to hear a panel discussion grading Rahm Emanuel on {{value.display|lower}}.</p>
+                        <p>Listen to <a href="http://www.wbez.org/programs/morning-shift">WBEZ's Morning Shift</a> on {{value.story.pub_date}} to hear a panel discussion grading Rahm Emanuel on {{value.display|lower}}.</p>
+                        <p>Want to make your voice heard? Call in at 312-923-9239 starting at 9:15 a.m. or follow the conversation on <a href="https://twitter.com/wbezmorning">Twitter</a> and <a href="https://www.facebook.com/wbez915">Facebook</a>, and let us know what grade you would give Rahm on {{value.display|lower}}.</p>
                     {% else %}
-                        <p>See their answers below and listen back to the conversation.</p>
-                        <strong>Our panel</strong>
+                        <p>We invited a panel of experts to WBEZ's Morning Shift to evaluate Mayor Emanuel. Listen back to the conversation and see the panelists' grades below.</p>
+                        <div>{{value.story.conversation_link}}</div>
+                        <strong>Our Panel</strong><strong class="pull-right">Their Grade</strong>
                         {% for row in value.grades %}
                             <div class="grader">
-                                {{ row.quote }} - {{ row.name }}, <a href="{{row.bio_link}}">{{ row.title }}</a>
-                                <span class="pull-right">{{row.grade}}</span>
+                                <span class="grade pull-right">{{row.grade}}</span>
+                                <h3 class="grade-quote">"{{ row.quote }}"</h3>
+                                <small class="grade-attribution">- {{ row.name }}, <a href="{{row.bio_link}}">{{ row.title }}</a></small>
                             </div>
                         {% endfor %}
+                        {% if value.story.chart1 %}
+                        <br>
+                        <strong>What do you think?</strong>
+                            <p>What grade would you give Rahm on {{value.display|lower}}? Tell us on <a href="{{value.story.facebook_callout}}">Facebook.</a><br/></p>
+                        {% endif %}
                     {% endif %}
                 </div>
-                <br>
+                
                 <div class="data" id="{{key|e}}_data">
                     <h3><span class="label label-default">Data <i class="fa fa-bar-chart-o"></i></h4></span>
                     {% if value.story.chart1 %}
-                        {{value.story.chart1}}
+                        {{value.story.chart1}}<br/>
                     {% endif %}
                     {% if value.story.chart2 %}
                         {{value.story.chart2}}
