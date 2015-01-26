@@ -100,14 +100,14 @@ COPY_PATH = 'data/copy.xlsx'
 """
 SHARING
 """
-SHARE_URL = 'http://%s/%s/' % (PRODUCTION_S3_BUCKET['bucket_name'], PROJECT_SLUG)
+SHARE_URL = 'http://interactive.wbez.org/gradingrahm/'
 
 """
 SERVICES
 """
 GOOGLE_ANALYTICS = {
-    'ACCOUNT_ID': 'none', #add id here
-    'DOMAIN': PRODUCTION_S3_BUCKET['bucket_name'],
+    'ACCOUNT_ID': 'UA-369047-1', #add id here
+    'DOMAIN': 'wbez.org',
     'TOPICS': '' # e.g. '[1014,3,1003,1002,1001]'
 }
 

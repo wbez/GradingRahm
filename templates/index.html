@@ -8,6 +8,7 @@
             <header>
                 <h1>Grading<img src="images/gradingrahmpng5.png"></img>Rahm</h1>
                 <h2>{{ COPY.content.subhead|smarty }}</h2>
+                <p class="explainer center-block text-center"><em>{{ COPY.content.project_explainer}}</em></p>
             </header>
         </div>
     </div>
@@ -17,7 +18,7 @@
                 {% for topic in COPY.topics %}
                 <li class="nav-element {{topic.value}}">
                     <a href="#{{topic.value}}">
-                        <strong><i class="fa {{topic.icon}} fa-2x"></i><br><span class="hidden-xs">{{topic.key}}</span></strong>
+                        <strong><i class="fa {{topic.icon}} fa-2x"></i><br><span class="{{topic.value}}">{{topic.menu}}</span></strong>
                     </a>
                 </li>
                 {% endfor %}
@@ -34,23 +35,20 @@
                     
                     <h4 class="promise text-center">"<em>{{value.story.promise}}"</em></h4>
                     <p class="rahm text-center"><em>&#8212; Rahm Emanuel</em></p>
-                    <h3><span class="label label-default">Our evaluation <i class="fa fa-file-text"></i></span></h3>
+                    <h3><span class="label label-default">Our report <i class="fa fa-file-text"></i></span></h3>
                     <h3 class="subhead lead">{{value.story.subhead}}</h3>
                     <p class="byline"><em>by {{value.story.byline}}</em></p>
+                    <div class="audio">{{value.story.audio}}</div>
                     <p class="summary">{{value.story.summary}}</p>
                 </div>
 
                 <div class="grades" id="{{key|e}}_grades">
                     <h3><span class="label label-default">Panelists' grades <i class="fa fa-check"></i></span></h3>
-
+                    <p>{{COPY.content.grades_subhead}}</p>
                     {% if value.story.conversation_pub|e == 'no' %}
-                        <p>Check back to hear what grades our panel gives Rahm Emanuel on {{key}}.</p>
-                        {% for row in value.grades %}
-                           <div class="grader">{{ row.name }} - <a href="{{row.bio_link}}">{{ row.title }}</a></div>
-                        {% endfor %}
+                        <p>Listen to WBEZ's Morning Shift on {{value.story.pub_date}} to hear a panel discussion grading Rahm Emanuel on {{value.display|lower}}.</p>
                     {% else %}
-                        
-                        <p>WBEZ asked a panel of experts to give us their grade on how Rahm Emaneul performed on {{key}}. See their answers and listen back to the conversation.</p>
+                        <p>See their answers below and listen back to the conversation.</p>
                         <strong>Our panel</strong>
                         {% for row in value.grades %}
                             <div class="grader">
@@ -111,13 +109,13 @@
     window.onload = function() {
         console.log('window onload')
         $('body').scrollspy('refresh');
-        $("iframe").each(function() { 
-            console.log('an iframe');
-            $(this).load(function(){
-                console.log('an iframe load');
-            })
-        });
     };
+
+    setTimeout(function(){ 
+        console.log('refresh scrollspy');
+        $('body').scrollspy('refresh');
+    }, 5000);
+    
 
     </script>
 

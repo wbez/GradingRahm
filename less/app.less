@@ -165,6 +165,15 @@ img {
 	height:200px
 }
 
+.explainer {
+	font-size:14px;
+	width:75%;
+	margin-top:14px;
+}
+
+p a, a:link {
+	color:#3b5998;
+}
 // end WBEZ styles
 
 
@@ -524,8 +533,14 @@ footer {
 	}
 
 	li.nav-element a {
-		font-size:10px;
+		font-size:8px;
+		line-height:10px;
+		padding: 15px 2px 10px 2px;
 		height:auto;
+	}
+
+	.nav-element.education a {
+
 	}
 
 	ul.nav {
@@ -554,4 +569,12 @@ footer {
 		h1 { font-size: 36px; }
 	}
 	footer { border-top: 1px solid #CCC; margin-top: 24px; }
+	span.jobs:after {
+	    content:"\a\a";
+	    white-space: pre;
+	}
+	span.education:after {
+	    content:"\a\a";
+	    white-space: pre;
+	}
 }

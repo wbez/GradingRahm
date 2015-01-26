@@ -31,6 +31,7 @@ def make_rahm_context(asset_depth=0):
         topic_context = {}
         topic_context['story'] = copy[story_sheet]
         topic_context['grades'] = copy[grades_sheet]
+        topic_context['display'] = topic['key']
         context['TOPICS'][slug] = topic_context
 
 
