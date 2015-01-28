@@ -55,7 +55,7 @@
                             <div class="grader">
                                 <span class="grade pull-right">{{row.grade}}</span>
                                 <h3 class="grade-quote">"{{ row.quote }}"</h3>
-                                <small class="grade-attribution">- {{ row.name }}, <a href="{{row.bio_link}}">{{ row.title }}</a></small>
+                                <small class="grade-attribution">- {{ row.name }}, {% if row.bio_link %}<a href="{{row.bio_link}}">{{ row.title }}</a>{% else %}{{ row.title }}{% endif %}</small>
                             </div>
                         {% endfor %}
                         {% if value.story.facebook_callout %}
